@@ -1,7 +1,7 @@
-import React, { FC, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { FC, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import { fetchUsers } from "../../actions";
+import { fetchUsers } from '../../redux/actions';
 
 interface Props {
   fetchUsers: () => {};
@@ -12,7 +12,7 @@ const HomePage: FC<Props> = (props: any) => {
     fetchUsers();
   }, []);
 
-  console.log("Props :>> ", props);
+  console.log('Props :>> ', props);
 
   return <div>Coming soon ....</div>;
 };
