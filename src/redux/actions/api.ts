@@ -1,8 +1,8 @@
-import { API, API_START, API_END, API_ERROR, ACCESS_DENIED } from "./types";
+import { API, API_START, API_END, API_ERROR, ACCESS_DENIED } from './types';
 
 const { api_url } = process.env;
 
-console.log("api_url :>> ", api_url);
+console.log('api_url :>> ', api_url);
 
 const expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
 export const urlRegex = new RegExp(expression);
@@ -32,16 +32,16 @@ export const apiError = (error: any) => ({
 
 // Api action creator for avoiding to write the payload the payload every single time
 export const apiAction = ({
-  url = "",
-  method = "GET",
+  url = '',
+  method = 'GET',
   data = null,
   accessToken = null,
   onSuccess = () => {},
   onFailure = () => {},
-  label = "",
+  label = '',
   headersOverride = null,
 }: any) => {
-  console.log("api_url  :>> ", api_url + url);
+  console.log('api_url  :>> ', api_url + url);
   return {
     type: API,
     payload: {

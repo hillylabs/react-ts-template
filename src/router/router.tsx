@@ -1,20 +1,17 @@
-import React, { PureComponent } from "react";
-import { Provider } from "react-redux";
-import { ConnectedRouter } from "connected-react-router";
-import { Route, Switch } from "react-router-dom";
+import React, { PureComponent } from 'react';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { Switch } from 'react-router-dom';
 
-import store, { history } from "../utils/configureStore";
+import store, { history } from '../utils/configureStore';
 
-import { HomePage } from "../pages";
-
+import rootRoutes from '../apps/root/router/router';
 class AppContainer extends PureComponent {
   render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Switch>
-            <Route component={HomePage} />
-          </Switch>
+          <Switch>{rootRoutes}</Switch>
         </ConnectedRouter>
       </Provider>
     );

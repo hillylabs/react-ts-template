@@ -1,8 +1,8 @@
-import axios from "axios";
-import { API } from "../actions/types";
-import { accessDenied, apiError, apiStart, apiEnd } from "../actions/api";
+import axios from 'axios';
+import { API } from '../redux/actions/types';
+import { accessDenied, apiError, apiStart, apiEnd } from '../redux/actions/api';
 
-import { Dispatch } from "redux";
+import { Dispatch } from 'redux';
 
 interface ApiProps {
   dispatch: Dispatch<any>;
@@ -35,13 +35,13 @@ const apiMiddleware = (props: ApiProps) => (next: any) => (action: any) => {
     headers,
   } = action.payload;
 
-  const dataOrParams = ["GET", "DELETE"].includes(method) ? "params" : "data";
+  const dataOrParams = ['GET', 'DELETE'].includes(method) ? 'params' : 'data';
 
   // axios default configs
-  axios.defaults.headers.common["Content-Type"] = "application/json";
-  axios.defaults.headers.common["Authorization"] = !!accessToken
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
+  axios.defaults.headers.common['Authorization'] = !!accessToken
     ? `Bearer ${accessToken}`
-    : "";
+    : '';
 
   if (label) {
     dispatch(apiStart(label));
