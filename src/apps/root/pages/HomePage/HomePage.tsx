@@ -1,29 +1,17 @@
-import React, { FC, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { FC} from 'react';
+import { Button } from 'antd';
+import Logo from '../../../../assets/icons/Logo.svg';
+import 'antd/dist/antd.css';
+import './HomePage.scss';
 
-import { fetchUsers } from '../../redux/actions';
-
-interface Props {
-  fetchUsers: () => {};
-}
-
-const HomePage: FC<Props> = (props: any) => {
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  console.log('Props :>> ', props);
-
-  return <div>Coming soon ....</div>;
+const HomePage: FC = () => {
+  return (
+    <div styleName="container-fluid">
+      <img src={Logo} alt="Nova" width="200"/>
+      <Button type="link">Login</Button>
+      <Button type="primary">Get Started</Button>
+    </div>
+  );
 };
 
-const mapStateToProps = ({ data = {}, isLoadingData = false }) => ({
-  data,
-  isLoadingData,
-});
-
-const mapDispatchProps = {
-  fetchUsers,
-};
-
-export default connect(mapStateToProps, mapDispatchProps)(HomePage);
+export default HomePage;

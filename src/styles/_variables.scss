@@ -38,6 +38,7 @@ $min_width: 320px;
 $max_width: 1200px;
 $min_font: 14px;
 $max_font: 24px;
+$landing_background: url('./assets/icons/Background.svg') no-repeat center center fixed;
 
 @mixin large-headline {
 	font-family: $headline-font;

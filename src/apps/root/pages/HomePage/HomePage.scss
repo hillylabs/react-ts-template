@@ -1,0 +1,7 @@
+@import '~variables';
+// $landing_background: url('./assets/icons/Background.svg') no-repeat center center fixed;
+.container-fluid{
+    height: 100%;
+    background-image: url('../../../../assets/icons/Background.svg') no-repeat center center fixed;
+    background-size: cover;
+}
