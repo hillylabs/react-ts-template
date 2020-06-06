@@ -1,6 +1,6 @@
 // chevronDown and chevronUp are placeholder icons
 
-import chevronDown from "./icons/chevronDown.svg";
-import chevronUp from "./icons/chevronUp.svg";
+import Logo from "./images/Logo.svg";
+import Background from "./images/bg.jpg";
 
-export { chevronDown, chevronUp };
+export { Logo, Background };
