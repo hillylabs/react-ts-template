@@ -1,1 +1,41 @@
 @import "~variables";
+
+a {
+  text-decoration: none;
+}
+.defaultLink{
+  color: #fff;
+  margin: 0;
+}
+.primaryLink{
+  background: #fff;
+  color: #1a2e54;
+  padding: 8px 20px;
+  margin:0;
+}
+.logo{
+  margin: 0 40px;
+}
+.navbarLinks{
+  margin:30px 0;
+}
+.content{
+  width:50%;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  font-size: 12px;
+  height: 50vh;
+}
+.landingHeader{
+  color: #59a2b2;
+  font-size: 25px;
+  align-self: flex-start;
+}
+.landingContent{
+  align-self: flex-start;
+}
