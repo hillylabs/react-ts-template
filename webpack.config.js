@@ -1,4 +1,5 @@
 const path = require("path");
+const fs  = require('fs');
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -17,6 +18,8 @@ const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = path.resolve(__dirname);
 const APP_PATH = path.resolve(ROOT_PATH, "src");
 const BUILD_PATH = path.resolve(ROOT_PATH, "dist");
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './src/styles/ant-theme-vars.less'), 'utf8'));
 
 const common = {
 	// webpack will take the files from ./src/index
@@ -35,7 +38,7 @@ const common = {
 	},
 	// adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
 	resolve: {
-		extensions: [".ts", ".tsx", ".js", ".css", ".scss"],
+		extensions: [".ts", ".tsx", ".js", ".css", ".scss", ".less"],
 		alias: {
 			variables: path.resolve(__dirname, "./src/styles/_variables.scss")
 		}
@@ -47,9 +50,16 @@ const common = {
 			{
 				test: /\.(ts|js)x?$/,
 				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader"
-				}
+				use: [
+					{
+						loader: "babel-loader",
+						options: {
+							plugins: [
+								["import", {"libraryName": "antd", "style": true} ],
+							]
+						}
+					}
+				],
 			},
 			{
 				test: /\.css$/,
@@ -64,6 +74,20 @@ const common = {
 							modules: true
 						}
 					}
+				]
+			},
+			{
+				test: /\.less$/,
+				use: [
+				  {loader: "style-loader"},
+				  {loader: "css-loader"},
+				  {loader: "less-loader",
+					options: {
+						sourceMap: true,
+						javascriptEnabled: true,
+					  	modifyVars: themeVariables
+					}
+				  }
 				]
 			},
 			{
